@@ -4,6 +4,8 @@ import ReactMapboxGl from 'react-mapbox-gl';
 import DrawControl from 'react-mapbox-gl-draw';
 import Geocoder from 'react-mapbox-gl-geocoder';
 import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationArrow, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const accessToken = 'pk.eyJ1IjoibHVnYXJ6YSIsImEiOiJja3ZpcTB4MnQyY3hnMzBwMXpvY2hsMDJnIn0.91hW0Z_WIsZNywLN6mEEFw';
 
@@ -13,11 +15,13 @@ const Map = ReactMapboxGl({
 });
 
 function App() {
+  const [initialLocationName, setInitialLocationName] = useState('Cliff House, 1090 Point Lobos, San Francisco, California 94121, United States');
   const [nominalPower, setNominalPower] = useState(0);
-  const [center, setCenter] = useState([-155.9794816, 19.6099322]);
+  const [center, setCenter] = useState([-122.513987, 37.7784925]);
   const [zoom, setZoom] = useState(19);
   const [geoCode, setGeoCode] = useState('');
   const [hasDrawn, setHasDrawn] = useState(false)
+  const [isLocating, setIsLocating] = useState(false)
   
   const handleDraw = ({ features }) => {
     /** MapBox GL Draw `features` includes coordinates 
@@ -53,6 +57,7 @@ function App() {
   const onSelected = (viewport, item) => {
     setGeoCode(item.place_name);
     setCenter(item.center);
+    console.log(item.place_name, item.center)
   }
 
   const handleMapMove = ({ transform }) => {
@@ -63,12 +68,14 @@ function App() {
     setZoom(transform.zoom);
   }
 
-  // WIP: geolocation feature
-  // const handleLocateClick = () => {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     setCenter([position.coords.latitude, position.coords.longitude]);
-  //   });
-  // }
+  const handleLocateClick = () => {
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCenter([position.coords.longitude, position.coords.latitude]);
+      setInitialLocationName(`${position.coords.longitude}, ${position.coords.latitude}`)
+      setIsLocating(false);
+    });
+  }
 
   return (
     <div className="map__container">
@@ -98,16 +105,20 @@ function App() {
       <div className="calculator__container">
 
         <h1>Nominal Power Calculator</h1>
-        <label>Address
+        <label className="geocoder__label">Address
           <Geocoder
             viewport={{}}                
             mapboxApiAccessToken={accessToken}
-            initialInputValue="'1234 Solar Avenue'"
+            initialInputValue={initialLocationName}
             hideOnSelect={true}
             value={geoCode}
             onSelected={onSelected}
             updateInputOnSelect={true}
           />
+          <button title="Locate Me" onClick={handleLocateClick} className="geocoder__locate-button">
+            {!isLocating && (<FontAwesomeIcon icon={faLocationArrow} />)}
+            {isLocating && (<FontAwesomeIcon icon={faSpinner} spin/>)}
+          </button>
         </label>
 
         <div className="nominal-power-result-container">
