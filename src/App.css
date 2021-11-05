@@ -18,6 +18,10 @@ label {
   font-size: 0.8em;
   display: block;
 }
+.mapbox-gl-draw_ctrl-draw-btn {
+  width: 3em;
+  height: 3em;
+}
 
 .mapbox-gl-draw_ctrl-draw-btn.active {
   background-color: rgb(228, 228, 228);
