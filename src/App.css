@@ -1,8 +1,102 @@
-.inner {
-  max-width: 400px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.map-container {
-  height: 400px;
+body {
+  font-size: 14px;
+}
+
+h1 {
+  margin-bottom: 0.4em;
+}
+
+label {
+  font-size: 0.8em;
+  display: block;
+}
+
+.mapbox-gl-draw_ctrl-draw-btn.active {
+  background-color: rgb(228, 228, 228);
+}
+
+.calculator__container {
+  position: absolute;
+  left: 1em;
+  right: 1em;
+  bottom: 0;
+  background-color: #fff;
+  border-radius: 0.5em 0.5em 0 0;
+  padding: 1em;
+  box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+}
+
+.nominal-power-result-container {
+  padding: 1em;
+  flex: 1; 
+  align-items: center;
+  text-align: center;
+  display: flex;
+  border: 1px solid #e3e3e3;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.5em;
+}
+
+.nominal-total {
+  font-size: 1.75em;
+  font-weight: 800;
+}
+
+
+.react-geocoder {
+  display: block;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.react-geocoder input {
+  margin-top: 0.25em;
+  width: 100%;
+ padding: 0.25em 1em;
+ border-radius: 3em;
+ border: 1px solid #aeaeae;
+}
+.react-geocoder-results {
+  position: absolute;
+  background-color: #fff;
+  padding: 0.5em;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+  box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.1);
+}
+
+.react-geocoder-item {
+  padding: 0.25em;
+}
+
+.react-geocoder-item:hover {
+  background-color: #eeeeee;
+}
+
+@media screen and (min-width: 800px) {
+  .calculator__container {
+    position: absolute;
+    left: auto;
+    right: 4em;
+    top: 4em;
+    bottom: 4em;
+    border-radius: 0.5em;
+    padding: 1em;
+    width: 20vw;
+    min-width: 300px;
+    box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
   }
+}
