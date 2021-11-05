@@ -87,11 +87,16 @@ function App() {
         onZoomEnd={handleMapZoom}
         zoom={[zoom]}
       >
-        <DrawControl onDrawUpdate={handleDraw} onDrawCreate={handleDraw} />
+        <DrawControl 
+          controls={{polygon: true, trash: true}}
+          displayControlsDefault={false}
+          onDrawUpdate={handleDraw} 
+          onDrawCreate={handleDraw}
+        />
       </Map>
       <div className="calculator__container">
 
-        <h1>Nominal Power Estimator</h1>
+        <h1>Nominal Power Calculator</h1>
         <label>Address
           <Geocoder
             mapboxApiAccessToken={accessToken}
