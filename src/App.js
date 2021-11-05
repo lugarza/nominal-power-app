@@ -123,7 +123,7 @@ function App() {
 
         <div className="nominal-power-result-container">
           {!hasDrawn && (<div>
-            <p>Draw a polygon around your estimated solar installation.</p>
+            <p>Find your property using the map. Then, draw a rectangle around your solar installation to see your nominal power estimation.</p>
           </div>)}
           {hasDrawn && (<div>
             <p>Nominal Power:</p>
