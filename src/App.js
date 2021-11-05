@@ -46,6 +46,8 @@ function App() {
     //arbitrary multiplier to simulate
     //nominal power calculation
 
+    // WIP: Nominal calculation is completely made up
+    // replace with actual nominal power formula.
     setNominalPower(area * multiplyer);
 
     //set flag when user has drawn to remove
@@ -57,9 +59,10 @@ function App() {
   const onSelected = (viewport, item) => {
     setGeoCode(item.place_name);
     setCenter(item.center);
-    console.log(item.place_name, item.center)
   }
 
+
+  // Keep track as user moves and zooms map
   const handleMapMove = ({ transform }) => {
     setCenter(transform.center);
   }
