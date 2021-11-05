@@ -99,6 +99,7 @@ function App() {
         <h1>Nominal Power Calculator</h1>
         <label>Address
           <Geocoder
+            viewport={{}}                
             mapboxApiAccessToken={accessToken}
             initialInputValue="'1234 Solar Avenue'"
             hideOnSelect={true}
