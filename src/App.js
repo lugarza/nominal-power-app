@@ -18,7 +18,7 @@ function App() {
   const [zoom, setZoom] = useState(19);
   const [geoCode, setGeoCode] = useState('');
   const [hasDrawn, setHasDrawn] = useState(false)
-
+  
   const handleDraw = ({ features }) => {
     /** MapBox GL Draw `features` includes coordinates 
      * for drawn polygon. using `calculateArea` 
@@ -92,6 +92,7 @@ function App() {
           displayControlsDefault={false}
           onDrawUpdate={handleDraw} 
           onDrawCreate={handleDraw}
+          defaultMode={'draw_polygon'}
         />
       </Map>
       <div className="calculator__container">
