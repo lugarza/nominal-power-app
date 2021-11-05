@@ -91,6 +91,7 @@ label {
   border: none;
 }
 .react-geocoder input {
+  font-size: 16px;
   margin-top: 0.25em;
   width: 100%;
  padding: 0.25em 2em 0.25em 0.25em;
