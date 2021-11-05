@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('Map and Calculator interface loaded', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const h1Elem = screen.getByText(/Nominal Power Calculator/i);
+  expect(h1Elem).toBeInTheDocument();
 });
+
